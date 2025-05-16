@@ -1,10 +1,10 @@
 <template>
   <div class="container">
-    <h1>Contador</h1>
-    <p>{{ this.numero }}<sup>2</sup>= {{ calCuadrado }}</p>
+    <h1>{{ title }}</h1>
+    <p>{{ this.value }}<sup>2</sup>= {{ calCuadrado }}</p>
     <div>
       <button v-on:click="incrementar()">+1</button>
-      <button v-on:click="decrementar()">-1</button>
+      <button @click="decrementar()">-1</button>
     </div>
 
     <!--<p>{{ numero + 1 }}</p>
@@ -25,18 +25,29 @@
 // directivas : me permiten gestionar eventos v-
 export default {
   // export default maneja opciones o items
+  //props: ["title", "value"],
+  props: {
+    title: String,
+    value: {
+      type: Number,
+      required: false,
+      default: 100,
+      validatos(value) {
+        // se puede declarar una validacion persontalizada que devuelva true o false
+        return value > 0;
+      },
+    },
+    p1: Boolean,
+    p2: Array,
+    p3: Object,
+    p4: Function,
+    p5: Date,
+    p6: Symbol,
+  },
   data() {
     return {
       //como atributos declaro la propiedad reactiva
-      numero: 5,
-      texto: "Joel Luna",
-      activo: true,
-      usuraio: {
-        nombre: "joel",
-        edad: 24,
-        genero: "M",
-      },
-      arreglo: ["Amarillo", "Azul"],
+      numero: 20,
     };
   },
 
@@ -53,6 +64,10 @@ export default {
     decrementar() {
       this.numero--;
     },
+
+    metodo1() {
+      return 45;
+    },
   },
 
   computed: {
@@ -64,6 +79,14 @@ export default {
       return this.numero * this.numero;
       //no se vuelve a ejecutar el metdo al menos que cmabie el resultado
     },
+  },
+
+  created() {
+    if (this.value > 0) {
+      console.log("Es correcto");
+    } else {
+      throw new Error("erro el valor no puede ser menor que cero");
+    }
   },
 };
 </script>
