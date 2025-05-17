@@ -1,8 +1,11 @@
 <template>
   <div class="container">
-    <div v-if="false"> <!-- v.if simpre recibe un booleano-->
+    <div v-show="true">
+      <!--<div v-if="false"> -->
+      <!-- v.if simpre recibe un booleano-->
       <h1>Estudiante Guardado</h1>
     </div>
+
     <label for="id_nombre">Nombre:</label>
     <input v-model="nuevoNombre" id="id_nombre" type="text" />
 
@@ -21,15 +24,30 @@
     <button v-on:click="agregarEstudiante()">Agregar</button>
 
     <!-- vincular los datos de entrada de un html con una propiedad Reactiva, el arhivo javascript funge como un controlador ..... -->
-    <ul>
-      <li
-        v-for="{ nombre, apellido, edad, genero, carrera } in lista"
-        :key="nombre"
-      >
-        Estudiante: {{ nombre }} - Apellido: {{ apellido }} - Edad: {{ edad }} -
-        Genero: {{ genero }} - Carrera: {{ carrera }}
-      </li>
-    </ul>
+    <!--Reemplazar el elemento ul y li por una tabla-->
+    <table border="2">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Edad</th>
+          <th>Género</th>
+          <th>Carrera</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="{ nombre, apellido, edad, genero, carrera } in lista"
+          :key="nombre"
+        >
+          <td>{{ nombre }}</td>
+          <td>{{ apellido }}</td>
+          <td>{{ edad }}</td>
+          <td>{{ genero }}</td>
+          <td>{{ carrera }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -66,7 +84,6 @@ export default {
           carrera: "Derecho",
         },
       ],
-      mostrar: false,
     };
   },
 
@@ -82,6 +99,9 @@ export default {
       //this.lista.unshift();
       this.lista.push(nuevo);
       this.mostrar=true;
+      this.nombre= null;
+
+      setTimeout(()=>{this.mostrar=false;},3000);
     },
   },
 };
@@ -137,5 +157,30 @@ li {
   margin-bottom: 9px;
   font-size: 15px;
   color: white;
+}
+table {
+  width: 100%;
+  font-size: 0.95rem;
+  background-color: #a9daa0;
+  box-shadow: 0 8px 24px rgba(3, 126, 30, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+thead {
+  background-color: #1cac47;
+}
+
+thead th {
+  text-align: center;
+  padding: 10px;
+  color: #333;
+  font-weight: 600;
+}
+
+tbody td {
+  padding: 10px;
+  border-bottom: 1px solid;
+  color: #28551b;
 }
 </style>
