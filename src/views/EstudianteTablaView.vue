@@ -1,5 +1,5 @@
 <template>
-  <EstudianteTabla/>
+  <EstudianteTabla />
 </template>
 
 <script>

@@ -165,6 +165,7 @@ table {
   box-shadow: 0 8px 24px rgba(3, 126, 30, 0.05);
   border-radius: 8px;
   overflow: hidden;
+  margin: 0 auto;
 }
 
 thead {
