@@ -2,21 +2,21 @@
   <!-- <HolaMundoView></HolaMundoView> -->
   <!--<Contador-View /> -->
   <!-- <EstudianteTablaView/> -->
-  <Formulario5View />
+  <PreguntaView/>
 </template>
 
 <script>
-import Formulario5View from "../src/views/Formulario5View.vue";
+//import Formulario5View from "../src/views/Formulario5View.vue";
 //import HolaMundoView from "../src/views/HolaMundoView.vue"
 //import ContadorView from "../src/views/ContadorView.vue";
 //import EstudianteView from "../src/views/EstudianteView.vue";
 //import EstudianteTablaViewVue from './views/EstudianteTablaView.vue';
 //import EstudianteTablaView from "../src/views/EstudianteTablaView.vue";
-
+import PreguntaView from "../src/views/PreguntaView.vue";
 export default {
   name: "App",
   components: {
-    Formulario5View,
+    PreguntaView,
   },
 };
 </script>
